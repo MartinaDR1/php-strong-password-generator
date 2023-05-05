@@ -3,11 +3,7 @@
     $passwordLength = $_GET["length"];
     //var_dump($passwordLength);
 
-
-    function generateRandomPassword($length){
-        $characters = "'0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ$%&\=?!";
-        echo substr(str_shuffle($characters), 0, $length);
-    }
+    include __DIR__ . "./helpers/functions.php"
 
 ?>
 
@@ -37,10 +33,13 @@
             </form>
         </div>
 
-        <div class="card shadow p-3 mt-5">
-            <h6>La tua password casuale è:</h6>
-            <p><?php generateRandomPassword($passwordLength)?> </p>
-        </div>
+        <?php if (!empty($_GET['length'])) : ?>
+            <div class="card shadow p-3 mt-5">
+                <h6>La tua password casuale è:</h6>
+                <p><?php generateRandomPassword($passwordLength)?> </p>
+            </div>
+        <?php endif; ?>    
+        
     </div>
 </body>
 </html>

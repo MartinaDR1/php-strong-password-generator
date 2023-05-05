@@ -1,10 +1,6 @@
 <?php
-
-    $passwordLength = $_GET["length"];
-    //var_dump($passwordLength);
-
-    include __DIR__ . "./helpers/functions.php"
-
+   session_start();
+  
 ?>
 
 
@@ -23,7 +19,7 @@
 <body>
     <div class="container my-3">
         <div class="card shadow p-3">
-            <form>
+            <form method="get" action="result.php">
                 <div class="mb-3">
                     <label for="length" class="form-label">Indica la lunghezza della password </label>
                     <input type="number" class="form-control" name="length" id="length" placeholder="Inserisci un numero">
@@ -31,15 +27,7 @@
                     <button type="submit" class="btn btn-primary mt-4">Submit</button>
                 </div>
             </form>
-        </div>
-
-        <?php if (!empty($_GET['length'])) : ?>
-            <div class="card shadow p-3 mt-5">
-                <h6>La tua password casuale è:</h6>
-                <p><?php generateRandomPassword($passwordLength)?> </p>
-            </div>
-        <?php endif; ?>    
-        
+        </div>  
     </div>
 </body>
 </html>
